@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author Diogo Pinheiro
  */
 public class Contas {
-    /*-------------------------------------- */
+    
     private double valor ;
     private String descricao;
     private static int ID;
@@ -20,5 +20,32 @@ public class Contas {
         this.descricao = descricao;
         ID = ID++;
     }
-    /*-------------------------------------- */
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public static int getID() {
+        return ID;
+    }
+
+    @Override
+    public String toString() {
+        return ("Conta Nº"+ID+" : Valor - "+ valor + "; Descrição - "+ descricao);
+    }
+    
+    
+    
 }

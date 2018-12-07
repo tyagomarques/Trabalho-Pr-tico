@@ -13,9 +13,8 @@ import myinputs.*;
 public class Admin extends Pessoa{
     private ArrayList<Pessoa> pessoa;
     private ArrayList<Espaco> espacos;
-    /* 1--------------------------------- */
     private ArrayList<Contas> contas;
-    /* 1--------------------------------- */
+    
    
     public Admin(String nome){
         super(nome);
@@ -26,7 +25,7 @@ public class Admin extends Pessoa{
         pessoa.add(a);
     }
     
-    /*2--------------------------------------- */
+    
     public void menuConta(){
         int escolha3 = 0;
         double valor = 0;
@@ -43,19 +42,22 @@ public class Admin extends Pessoa{
                 contas.add(cont);   
                 break;
             case 2: // Remover conta
-                System.out.println("Desc : ");  // Criar ID
-                s = Ler.umaString();            
-                            
+                System.out.println("Escreva ID : ");  
+                valor = Ler.umInt();            
+                for(Contas e : contas) {
+                        if (e.getID() == valor) {
+                           contas.remove(e);
+                        }
+                    }
                 break;
             }
     }
-    /*2---------------------------------- */
-    
+      
     public void menu(){
-        System.out.println("1 – Gestão Pessoas;\n" + "2 – Gestão Contas;\n" + "3 – Gestão Tarefas;\n" + "4 – Remover."  + "5.Sair\n");
-    }
-        int escolha = Ler.umInt();
-        while(escolha != 5){       // Menu Inicial
+        int escolha = 0;
+        System.out.println("1 – Gestão Pessoas;\n" + "2 – Gestão Contas;\n" + "3 – Gestão Tarefas;\n" + "4 – Sair.\n");
+        escolha = Ler.umInt();
+        while(escolha != 4){       // Menu Inicial
             switch(escolha){
                 case 1: 
                     
@@ -65,10 +67,11 @@ public class Admin extends Pessoa{
                     break;
                         
                 case 5:
-                    return;
+                    break;
                 
             }
             System.out.println("Opção : ");
             escolha = Ler.umInt();
+        }
     }
 }
