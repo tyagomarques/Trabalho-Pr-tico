@@ -30,8 +30,10 @@ public class Admin extends Pessoa{
         int escolha3 = 0;
         double valor = 0;
         String s;
+        
         System.out.println("1 - Adicionar Conta a Pagar;\n" + "2 - Remover Conta a Pagar;\n" +"3 - Consultar Contas.\n");
         escolha3 = Ler.umInt();
+       
         switch(escolha3){       // Sub-menu Contas
             case 1: // Inserir conta
                 System.out.println("Valor da conta : ");
@@ -50,7 +52,17 @@ public class Admin extends Pessoa{
                         }
                     }
                 break;
+            case 3: // Consultar Contas
+                System.out.println("Contas: \n");
+                for(Contas e : contas) {
+                        e.toString();
+                }
+                break;
+            default:  
+                System.out.println("Opção não existente!!");
+                break;
             }
+        
     }
       
     public void menu(){
@@ -66,7 +78,7 @@ public class Admin extends Pessoa{
                     
                     break;
                         
-                case 5:
+                case 4:
                     break;
                 
             }
