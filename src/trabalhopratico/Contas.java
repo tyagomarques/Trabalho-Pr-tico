@@ -13,12 +13,14 @@ public class Contas {
     
     private double valor ;
     private String descricao;
-    private static int ID;
+    private static int conta;
+    private int ID;
     
     public Contas(double valor, String descricao){
         this.valor = valor;
         this.descricao = descricao;
-        ID = ID++;
+        conta++;
+        ID = conta;
     }
 
     public double getValor() {
@@ -37,13 +39,13 @@ public class Contas {
         this.descricao = descricao;
     }
 
-    public static int getID() {
+    public int getID() {
         return ID;
     }
 
     @Override
     public String toString() {
-        return ("Conta Nº"+ID+" : Valor - "+ valor + "; Descrição - "+ descricao);
+        return ("Conta Nº" + ID +" : Valor - "+ valor + "; Descrição - "+ descricao);
     }
     
     

@@ -13,8 +13,8 @@ import myinputs.*;
 public class Admin extends Pessoa{
     private ArrayList<Pessoa> pessoa;
     private ArrayList<Espaco> espacos;
-    private ArrayList<Contas> contas;
-    
+    private ArrayList<Contas> contasPagar;
+    private ArrayList<Contas> contasHist;
    
     public Admin(String nome){
         super(nome);
@@ -35,26 +35,32 @@ public class Admin extends Pessoa{
         escolha3 = Ler.umInt();
        
         switch(escolha3){       // Sub-menu Contas
-            case 1: // Inserir conta
+            case 1: // Inserir conta        FALTA DIVIDIR PELAS PESSOAS
                 System.out.println("Valor da conta : ");
                 valor = Ler.umDouble();
                 System.out.println("Descrição da conta : ");
                 s = Ler.umaString();
+                // Variavel com numero de pessoas
+                // Set valor para cada pessoa : valor/nºpessoas
                 Contas cont = new Contas(valor, s);
-                contas.add(cont);   
+                contasPagar.add(cont);   
                 break;
-            case 2: // Remover conta
+            case 2: // Remover conta pagar -> passar para conta (manter histórico)
                 System.out.println("Escreva ID : ");  
                 valor = Ler.umInt();            
-                for(Contas e : contas) {
+                for(Contas e : contasPagar) {
                         if (e.getID() == valor) {
-                           contas.remove(e);
+                           double hold = e.getValor();  // Obter valor e descrição para criar nova conta
+                           String h = e.getDescricao();
+                           Contas cont2 = new Contas(hold,h);
+                           contasHist.add(cont2);       // Passar conta a pagar para histórico de contas
+                           contasPagar.remove(e);       // Remover do array contas a pagar
                         }
                     }
                 break;
             case 3: // Consultar Contas
                 System.out.println("Contas: \n");
-                for(Contas e : contas) {
+                for(Contas e : contasPagar) {
                         e.toString();
                 }
                 break;
@@ -75,11 +81,15 @@ public class Admin extends Pessoa{
                     
                     break;
                 case 2:
-                    
+                    menuConta();
                     break;
                         
                 case 4:
                     break;
+                default:  
+                    System.out.println("Opção não existente!!");
+                    break;
+            }
                 
             }
             System.out.println("Opção : ");
