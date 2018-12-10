@@ -5,6 +5,8 @@
  */
 package trabalhopratico;
 
+import myinputs.Ler;
+
 /**
  *
  * @author Diogo Pinheiro
@@ -18,4 +20,12 @@ public class TrabalhoPratico {
         // TODO code application logic here
     }
     
+    public void Menu(){
+        /* 1- Mostrar Notificações
+           2- Consultar Contas a pagar/Histórico de contas
+           3- Consultar Tarefas
+           4- Menu Admin (necessita de verificação de password)
+        */
+        
+    }
 }

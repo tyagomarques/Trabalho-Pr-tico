@@ -58,11 +58,27 @@ public class Admin extends Pessoa{
                         }
                     }
                 break;
-            case 3: // Consultar Contas
-                System.out.println("Contas: \n");
-                for(Contas e : contasPagar) {
-                        e.toString();
-                }
+            case 3: // Consultar Contas( a pagar e histórico)
+                System.out.println("1. Contas a Pagar.\n2. Histórico de Contas");
+                int escolha4 = 0;
+                escolha4 = Ler.umInt();
+                switch(escolha4){
+                    case 1:
+                       System.out.println("Contas: \n");
+                       for(Contas e : contasPagar) {
+                           e.toString();
+                       }
+                       break;
+                    case 2:
+                       System.out.println("Histórico de Contas: \n");
+                       for(Contas e : contasHist) {
+                           e.toString();
+                       }
+                       break;
+                    default:
+                        System.out.println("Opção não existente!!");
+                        break;
+                } 
                 break;
             default:  
                 System.out.println("Opção não existente!!");
@@ -71,11 +87,11 @@ public class Admin extends Pessoa{
         
     }
       
-    public void menu(){
+    public void menuAdmin(){
         int escolha = 0;
         System.out.println("1 – Gestão Pessoas;\n" + "2 – Gestão Contas;\n" + "3 – Gestão Tarefas;\n" + "4 – Sair.\n");
         escolha = Ler.umInt();
-        while(escolha != 4){       // Menu Inicial
+        while(true){       // Menu Inicial
             switch(escolha){
                 case 1: 
                     
@@ -85,16 +101,15 @@ public class Admin extends Pessoa{
                     break;
                         
                 case 4:
-                    break;
+                    return;     // Sair do menu
                 default:  
                     System.out.println("Opção não existente!!");
                     break;
             }
-                
-            }
             System.out.println("Opção : ");
-            escolha = Ler.umInt();
+            escolha = Ler.umInt();    
         }
+            
     }
 }
-//--------------------------
+

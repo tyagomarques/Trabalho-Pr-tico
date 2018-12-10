@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package trabalhopratico;
-import java.util.ArrayList;
 /**
  *
  * @author Diogo Pinheiro
@@ -19,8 +18,8 @@ public class Contas {
     public Contas(double valor, String descricao){
         this.valor = valor;
         this.descricao = descricao;
-        conta++;
-        ID = conta;
+        conta++;            // Incrementar valor da conta
+        ID = conta;         // Atribuir esse valor a um ID de forma a este ser o número seguinte à conta criada anteriormente
     }
 
     public double getValor() {
