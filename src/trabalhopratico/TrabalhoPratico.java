@@ -25,6 +25,35 @@ public class TrabalhoPratico {
         {
             System.out.println(membros.get(i).getNota());
         }
+        
+        //-------------------------------------------------------//
+        int sair = 0;
+        int escolha;
+        do
+        {
+            System.out.println("1 - Menu Admin");
+            System.out.println("2 - Consultar Contas a pagar");
+            System.out.println("3 - Consultar Tarefas");
+            System.out.println("4 - Sair");
+            
+            escolha = Ler.umInt();
+            
+            switch(escolha)
+            {
+                case '1' : ;
+                    
+                case '2' : ;
+                
+                case '3' : ;
+                
+                case '4' :
+                                sair = 1;
+                                // gravar no ficheiro//
+            }
+            
+        }
+        while(sair == 0);
+        
     }
     
     public void Menu(){

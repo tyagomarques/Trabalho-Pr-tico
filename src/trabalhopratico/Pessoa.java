@@ -14,7 +14,8 @@ public class Pessoa {
     private String nome;
     private String pass;
     private ArrayList<Tarefas> tasks;
-    private ArrayList<Contas> contas;
+    private ArrayList<Contas> contasPagar;
+    private ArrayList<Contas> contasHist;
     private String Nota;
 
     private Pessoa(){ 
