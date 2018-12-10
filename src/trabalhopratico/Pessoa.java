@@ -15,10 +15,10 @@ public class Pessoa {
     private ArrayList<Tarefas> tasks;
     private ArrayList<Contas> contas;
 
-    private Pessoa(){ 
+    private Pessoa(){
     }
     
-    private Pessoa(String nome){
+    public Pessoa(String nome){
         this.nome = nome;
     }
     
