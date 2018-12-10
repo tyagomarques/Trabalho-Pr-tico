@@ -5,6 +5,7 @@
  */
 package trabalhopratico;
 
+import java.util.ArrayList;
 import myinputs.Ler;
 
 /**
@@ -18,6 +19,12 @@ public class TrabalhoPratico {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        ArrayList<Pessoa> membros = new ArrayList<Pessoa> ();
+        
+        for (int i = 0; i < Pessoa.getNum(); i++)
+        {
+            System.out.println(membros.get(i).getNota());
+        }
     }
     
     public void Menu(){
