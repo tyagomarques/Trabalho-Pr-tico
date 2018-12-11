@@ -17,6 +17,7 @@ public class Pessoa {
     private ArrayList<Contas> contasPagar;
     private ArrayList<Contas> contasHist;
     private String Nota;
+    private int categoria; // 0 - Pessoa, 1 - Admin
 
     private Pessoa(){
     }
@@ -26,16 +27,23 @@ public class Pessoa {
         this.num++;
     }
     
+    public Pessoa(Pessoa pessoa)
+    {
+        this.nome = pessoa.nome;
+        this.pass = pessoa.pass;
+        setTasks(pessoa.getTasks());
+        setContas(pessoa.getContas());
+        setContas(pessoa.getContasHist());
+        Nota = pessoa.getNota();
+        categoria = pessoa.getCategoria();
+    }
+    
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getPass() {
-        return pass;
     }
 
     public void setPass(String pass) {
@@ -47,17 +55,43 @@ public class Pessoa {
     }
 
     public void setTasks(ArrayList<Tarefas> tasks) {
-        this.tasks = tasks;
+        ArrayList<Tarefas> ntarefas = new ArrayList<Tarefas>();
+        
+        for(int i = 0; i < tasks.size(); i++)
+        {
+            ntarefas.add(tasks.get(i));
+        }
+        this.tasks = ntarefas;
     }
 
     public ArrayList<Contas> getContas() {
-        return contas;
+        return contasPagar;
     }
 
     public void setContas(ArrayList<Contas> contas) {
-        this.contas = contas;
+        ArrayList<Contas> nContas = new ArrayList<Contas>();
+        
+        for(int i = 0; i < contas.size(); i++)
+        {
+            nContas.add(contas.get(i));
+        }
+        this.contasPagar = nContas;
     }
 
+    public ArrayList<Contas> getContasHist() {
+        return contasHist;
+    }
+
+    public void setContasHist(ArrayList<Contas> contasHist) {
+        ArrayList<Contas> nContasHist = new ArrayList<Contas>();
+        
+        for(int i = 0; i < contasHist.size(); i++)
+        {
+            nContasHist.add(contasHist.get(i));
+        }
+        this.contasHist = nContasHist;
+    }
+    
     public static int getNum() {
         return num;
     }
@@ -71,4 +105,15 @@ public class Pessoa {
     {
         return (nome + "/n NOTA: /n" + Nota + "/n/n" );
     }
+    
+    public int getCategoria()
+    {
+        return categoria;
+    }
+    
+    public void setCategoria(int valor)
+    {
+        categoria = valor;
+    }
+    
 }

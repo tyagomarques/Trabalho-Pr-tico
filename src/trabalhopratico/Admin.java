@@ -11,20 +11,59 @@ import myinputs.*;
  * @author Diogo Pinheiro
  */
 public class Admin extends Pessoa{
-    private ArrayList<Pessoa> pessoa;
-    private ArrayList<Espaco> espacos;
-    private ArrayList<Contas> contasPagar;
-    private ArrayList<Contas> contasHist;
+    private ArrayList<Pessoa> pessoa = new ArrayList<Pessoa>();
+    private ArrayList<Espaco> espacos = new ArrayList<Espaco>();
+    private ArrayList<Contas> contasPagar = new ArrayList<Contas>();
+    private ArrayList<Contas> contasHist = new ArrayList<Contas>();
    
-    public Admin(String nome){
-        super(nome);
-        
+    public Admin(Pessoa pessoa){
+        super(pessoa);  
     }
     
     public void insert(Pessoa a){
         pessoa.add(a);
     }
     
+    public void menuGestaoPessoas()
+    {
+        Pessoa novap;
+        Pessoa test;
+        String nome;
+        int opcao = 0;
+       
+        
+        do
+        {
+            System.out.println("\t\t Menu de Gestão de Pessoas");
+            System.out.println("\t 1 - Adicionar Pessoa; \n\t 2 - Remover Pessoa;\n \t 3 - Sair para o menu principal\n");
+            opcao = Ler.umInt();
+            
+            switch(opcao){       // Sub-menu 1
+                case 1: // Inserir Pessoa
+                        System.out.println("Nome da Pessoa : ");
+                        nome = Ler.umaString();
+                        novap = new Pessoa(nome);
+                        pessoa.add(novap);
+                  break;
+                case 2: // Remover Pessoa
+                        System.out.println("Nome da Pessoa : ");
+                        nome = Ler.umaString();
+
+                        for(int i = 0; i < pessoa.size(); i++)
+                        {
+                            test = (Pessoa) pessoa.get(i);
+                            if( test.getNome().equals(nome) )
+                                pessoa.remove(i);
+
+                        }                  
+                        break;
+                case 3:
+                        break;
+                default: 
+                       System.out.println("Introduziu uma opção que não existe!!!");
+            }
+        }while(opcao != 3);
+    }
     
     public void menuConta(){
         int escolha3 = 0;
@@ -89,25 +128,25 @@ public class Admin extends Pessoa{
       
     public void menuAdmin(){
         int escolha = 0;
-        System.out.println("1 – Gestão Pessoas;\n" + "2 – Gestão Contas;\n" + "3 – Gestão Tarefas;\n" + "4 – Sair.\n");
-        escolha = Ler.umInt();
-        while(true){       // Menu Inicial
+        
+        while(escolha != 4){       // Menu Inicial
+            System.out.println("1 – Gestão Pessoas;\n" + "2 – Gestão Contas;\n" + "3 – Gestão Tarefas;\n" + "4 – Sair.\n");
+            escolha = Ler.umInt();
+        
             switch(escolha){
                 case 1: 
-                    
-                    break;
+                        menuGestaoPessoas();
+                        break;
                 case 2:
                     menuConta();
                     break;
                         
                 case 4:
-                    return;     // Sair do menu
+                    break;     // Sair do menu
                 default:  
-                    System.out.println("Opção não existente!!");
+                    System.out.println("Opção não existente!!\n");
                     break;
-            }
-            System.out.println("Opção : ");
-            escolha = Ler.umInt();    
+            }            
         }
             
     }
