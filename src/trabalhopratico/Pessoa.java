@@ -27,6 +27,17 @@ public class Pessoa {
         this.nome = nome;
         this.num++;
     }
+
+    public Pessoa(String nome, String pass) {
+        this.nome = nome;
+        this.pass = pass;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+    
+    
     
     public Pessoa(Pessoa pessoa)
     {
