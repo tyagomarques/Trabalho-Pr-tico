@@ -5,6 +5,7 @@
  */
 package trabalhopratico;
 import java.util.ArrayList;
+import myinputs.Ler;
 /**
  *
  * @author Diogo Pinheiro
@@ -90,6 +91,41 @@ public class Pessoa {
             nContasHist.add(contasHist.get(i));
         }
         this.contasHist = nContasHist;
+    }
+    
+    public void removerContasPagar(int valor){
+        for(Contas e : contasPagar) {
+            if (e.getID() == valor) {
+                double hold = e.getValor();  // Obter valor e descrição para criar nova conta
+                String h = e.getDescricao();
+                Contas cont2 = new Contas(hold,h);
+                contasHist.add(cont2);       // Passar conta a pagar para histórico de contas
+                contasPagar.remove(e);       // Remover do array contas a pagar
+            }
+        }
+    }
+    
+    public void consultas(){        // Consultar contas a pagar e histórico
+        System.out.println("1. Contas a Pagar.\n2. Histórico de Contas");
+        int escolha4 = 0;
+        escolha4 = Ler.umInt();
+        switch(escolha4){
+            case 1:
+                System.out.println("Contas: \n");
+                for(Contas e : contasPagar) {
+                    e.toString();
+                }
+                break;
+            case 2:
+                System.out.println("Histórico de Contas: \n");
+                for(Contas e : contasHist) {
+                    e.toString();
+                }
+                break;
+            default:
+                System.out.println("Opção não existente!!");
+                break;
+        } 
     }
     
     public static int getNum() {

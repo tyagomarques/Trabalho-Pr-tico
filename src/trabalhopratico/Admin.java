@@ -13,8 +13,8 @@ import myinputs.*;
 public class Admin extends Pessoa{
     private ArrayList<Pessoa> pessoa = new ArrayList<Pessoa>();
     private ArrayList<Espaco> espacos = new ArrayList<Espaco>();
-    private ArrayList<Contas> contasPagar = new ArrayList<Contas>();
-    private ArrayList<Contas> contasHist = new ArrayList<Contas>();
+    private ArrayList<Contas> contas = new ArrayList<Contas>();
+    
    
     public Admin(Pessoa pessoa){
         super(pessoa);  
@@ -67,7 +67,9 @@ public class Admin extends Pessoa{
     
     public void menuConta(){
         int escolha3 = 0;
+        int n = 0;
         double valor = 0;
+        double pagar = 0;
         String s;
         
         System.out.println("1 - Adicionar Conta a Pagar;\n" + "2 - Remover Conta a Pagar;\n" +"3 - Consultar Contas.\n");
@@ -79,45 +81,31 @@ public class Admin extends Pessoa{
                 valor = Ler.umDouble();
                 System.out.println("Descrição da conta : ");
                 s = Ler.umaString();
-                // Variavel com numero de pessoas
-                // Set valor para cada pessoa : valor/nºpessoas
-                Contas cont = new Contas(valor, s);
-                contasPagar.add(cont);   
+                Contas npr = new Contas(valor,s);
+                contas.add(npr);    // Arraylist que armazena valor total de cada conta a pagar
+                n = pessoa.size();  // tamanho array pessoas
+                pagar = valor/n; // Set valor para cada pessoa : valor/nºpessoas
+                // Adicionar valor individual que cada pessoa tem a pagar
+                ArrayList<Contas> cont = new ArrayList<Contas>();
+                Contas npr2 = new Contas(pagar,s);
+                cont.add(npr2);
+                // Assumir que Admin está no arrayList pessoa -> VERIFICAR  
+                for(int i = 0; i < n ; i++){
+                    super.setContas(cont);
+                }
                 break;
             case 2: // Remover conta pagar -> passar para conta (manter histórico)
                 System.out.println("Escreva ID : ");  
-                valor = Ler.umInt();            
-                for(Contas e : contasPagar) {
-                        if (e.getID() == valor) {
-                           double hold = e.getValor();  // Obter valor e descrição para criar nova conta
-                           String h = e.getDescricao();
-                           Contas cont2 = new Contas(hold,h);
-                           contasHist.add(cont2);       // Passar conta a pagar para histórico de contas
-                           contasPagar.remove(e);       // Remover do array contas a pagar
-                        }
-                    }
+                n = Ler.umInt();            
+                for(int i = 0; i< pessoa.size();i++){   // Fazer em todas as pessoas
+                    super.removerContasPagar(n);
+                }
                 break;
-            case 3: // Consultar Contas( a pagar e histórico)
-                System.out.println("1. Contas a Pagar.\n2. Histórico de Contas");
-                int escolha4 = 0;
-                escolha4 = Ler.umInt();
-                switch(escolha4){
-                    case 1:
-                       System.out.println("Contas: \n");
-                       for(Contas e : contasPagar) {
-                           e.toString();
-                       }
-                       break;
-                    case 2:
-                       System.out.println("Histórico de Contas: \n");
-                       for(Contas e : contasHist) {
-                           e.toString();
-                       }
-                       break;
-                    default:
-                        System.out.println("Opção não existente!!");
-                        break;
-                } 
+            case 3: // Consultar Contas
+                for(Contas e : contas) {
+                    e.toString();
+                }
+                
                 break;
             default:  
                 System.out.println("Opção não existente!!");
