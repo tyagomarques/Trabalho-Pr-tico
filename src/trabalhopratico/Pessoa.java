@@ -13,12 +13,17 @@ public class Pessoa {
     private static int num = 0;
     private String nome;
     private String pass;
-    private ArrayList<Tarefas> tasks;
+    private ArrayList<Espaco> tasks; /*Alteração Tarefas -> Espaco*/
     private ArrayList<Contas> contasPagar;
     private ArrayList<Contas> contasHist;
     private String Nota;
     private int categoria; // 0 - Pessoa, 1 - Admin
-
+    private int ntask; /*Quantas task faz?*/
+    private static int sucessos; /*(Tasks) Quantos "tasks" têm sucesso em todos*/
+    /*Detalhes: Usando sucessos posso ver se todas as pessoas já tem 1 task e se sim vai
+    * dizer ao programa que deve começar a criar 2 tasks para cada um azar se tiveste 2 tasks
+    * e o outro 1, afinal não à outra forma "justa" de o fazer
+    * se querem queixar do random, queixem com o programa Java*/
     private Pessoa(){
     }
     
@@ -37,6 +42,16 @@ public class Pessoa {
         Nota = pessoa.getNota();
         categoria = pessoa.getCategoria();
     }
+    public static int getSucessos() {
+        return sucessos;
+    }
+
+    public static void setSucessos(int sucessos) {
+        Pessoa.sucessos = sucessos;
+    }
+    public static void setSucessos() {
+        Pessoa.sucessos++;
+    }
     
     public String getNome() {
         return nome;
@@ -54,8 +69,8 @@ public class Pessoa {
         return tasks;
     }
 
-    public void setTasks(ArrayList<Tarefas> tasks) {
-        ArrayList<Tarefas> ntarefas = new ArrayList<Tarefas>();
+    public void setTasks(ArrayList<Espaco> tasks) {
+        ArrayList<Espaco> ntarefas = new ArrayList<Espaco>();
         
         for(int i = 0; i < tasks.size(); i++)
         {
@@ -63,7 +78,18 @@ public class Pessoa {
         }
         this.tasks = ntarefas;
     }
-
+    public boolean foundTasks(String nome){
+        for(int i = 0; i < tasks.size(); i++)
+        {
+            if(tasks.get(i).equals(nome)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public void addTasks(Espaco tasks){
+        this.tasks.add(tasks);
+    }
     public ArrayList<Contas> getContas() {
         return contasPagar;
     }
@@ -116,4 +142,11 @@ public class Pessoa {
         categoria = valor;
     }
     
+    public int getNtask() {
+        return ntask;
+    }
+
+    public void setNtask(int ntask) {
+        this.ntask = ntask;
+    }
 }
