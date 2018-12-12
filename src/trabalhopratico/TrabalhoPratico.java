@@ -70,11 +70,13 @@ public class TrabalhoPratico {
         int escolha;
         do
         {
-            System.out.println("1 - Menu Admin");
-            System.out.println("2 - Consultar Contas a pagar");
-            System.out.println("3 - Consultar Tarefas");
-            System.out.println("4 - Sair");
-            
+            System.out.println("1 - Consultar Contas a pagar");
+            System.out.println("2 - Consultar Tarefas");
+            System.out.println("3 - Sair");
+            if(a.getCategoria() == 1){
+                System.out.println("A - Menu Admin");
+            }
+                        
             escolha = Ler.umInt();
             
             switch(escolha)
