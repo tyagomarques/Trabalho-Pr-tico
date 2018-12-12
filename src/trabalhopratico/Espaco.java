@@ -42,6 +42,9 @@ public class Espaco {
     public void setHistorico(int day,String conteudo) {
         this.historico.set(day, conteudo);
     }
+    public void addHistorico(int day,String conteudo){
+        this.historico.add(day,conteudo);
+    }
     public ArrayList<Integer> getData(){
         return data;
     }
