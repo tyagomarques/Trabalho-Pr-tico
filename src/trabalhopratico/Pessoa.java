@@ -39,6 +39,18 @@ public class Pessoa {
         this.pass = pass;
     }
 
+
+    public boolean taskDone(int day,String nome){
+        int i = this.showIDTasks(nome);
+        if(i!=-1){
+            Espaco e = tasks.get(i);
+            e.setData(day,1);
+            e.addHistorico(day,num+") "+this.nome);
+            tasks.set(i,e);
+            return true;
+        }
+        return false;
+    }
     public String getPass() {
         return pass;
     }
@@ -101,6 +113,16 @@ public class Pessoa {
         }
         return false;
     }
+    public int showIDTasks(String nome){
+        for(int i = 0; i < tasks.size(); i++)
+        {
+            if(tasks.get(i).equals(nome)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void addTasks(Espaco tasks){
         this.tasks.add(tasks);
     }
