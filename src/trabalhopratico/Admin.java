@@ -136,7 +136,28 @@ public class Admin extends Pessoa{
                     break;
             }            
         }
-            
+     public void menuTarefas() { /*Por fazer*/
+            int escolha = 0;
+            System.out.println("1 – Adicionar;\n" + "2 – Remover;\n" + "3 – Consultar;\n" + "4 – Sair.\n");
+            escolha = Ler.umInt();
+            while (true) {       // Menu Inicial
+                switch (escolha) {
+                    case 1:
+
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        return;     // Sair do menu
+                    default:
+                        System.out.println("Opção não existente!!");
+                        break;
+                }
+                System.out.println("Opção : ");
+                escolha = Ler.umInt();
+            } 
     }
 }
 
