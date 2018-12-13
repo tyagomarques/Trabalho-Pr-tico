@@ -72,9 +72,10 @@ public class TrabalhoPratico {
         do
         {
             System.out.println("1 - Menu Admin");
-            System.out.println("2 - Consultar Contas a pagar");
-            System.out.println("3 - Consultar Tarefas");
-            System.out.println("4 - Sair");
+            System.out.println("2 - Contas");
+            System.out.println("3 - Tarefas");
+            System.out.println("4 - Notas");
+            System.out.println("5 - Sair");
             System.out.println("");
             System.out.print("ESCOLHA :");
             
@@ -82,22 +83,24 @@ public class TrabalhoPratico {
             
             switch(escolha)
             {
-                case 1 :  System.out.println("PUTAS BEBE");
-                            MenuAdmin(membros);
-                            break;
+                case 1 :
+                    MenuAdmin(membros);
+                    break;
                     
-                case 2 : break;
+                case 2 : 
+                    menuContas(membros,ind);
+                    break;
                 
                 case 3 : break;
                 
-                case 4 :
+                case 5 :
                                 
                                 // gravar no ficheiro//
                                 break;
             }
             
         }
-        while(escolha != 4);   
+        while(escolha != 5);   
     }
 
     private static void MenuAdmin(ArrayList<Pessoa> membros) {
@@ -112,7 +115,7 @@ public class TrabalhoPratico {
                         menuGestaoPessoas(membros);
                         break;
                 case 2:
-                        menuConta(membros);
+                        menuContaAdmin(membros);
                         break;
                         
                 case 4:
@@ -170,7 +173,7 @@ public static void menuGestaoPessoas(ArrayList<Pessoa> membros)
     }
 
 
-public static void menuConta(ArrayList<Pessoa> membros){
+public static void menuContaAdmin(ArrayList<Pessoa> membros){
         int escolha3 = 0;
         int n = 0;
         double valor = 0;
@@ -193,10 +196,12 @@ public static void menuConta(ArrayList<Pessoa> membros){
                 // Adicionar valor individual que cada pessoa tem a pagar
                 Contas npr2 = new Contas(pagar,s);
                 // Assumir que Admin está no arrayList pessoa -> VERIFICAR  
-                for(int i = 0; i < n ; i++){
+                for(int i = 0; i < n ; i++)
+                {
                     membros.get(i).setContas(npr2);
                 }
                 break;
+                
 
             default:  
                 System.out.println("Opção não existente!!");
@@ -227,4 +232,54 @@ public static void menuConta(ArrayList<Pessoa> membros){
                 escolha = Ler.umInt();
             } 
     }*/
+
+
+public static void menuContas (ArrayList<Pessoa> membros, int ind)
+{
+    Contas aux;
+    int remove;
+    String s;
+     int escolha = 0;
+            System.out.println("1 – Remover contas a pagar;\n" + "2 – Consultar contas a Pagar;\n" + "3 – Historico de contas;\n" + "4 – Sair.\n");
+            escolha = Ler.umInt();
+            while (escolha != 4) {       // Menu Inicial
+                switch (escolha) {
+                    case 1: 
+                        
+                        for(int i = 0; i < membros.get(ind).getContas().size(); i++)
+                        {
+                            aux = membros.get(ind).getContas().get(i);
+                            s = aux.toString();
+                            System.out.println(s);  
+                        }
+                        System.out.print("Conta a remover :");
+                        remove = Ler.umInt();
+                        membros.get(ind).removerContasPagar(remove);
+                        break;
+                    case 2: 
+                        for(int i = 0; i < membros.get(ind).getContas().size(); i++)
+                        {
+                            aux = membros.get(ind).getContas().get(i);
+                            s = aux.toString();
+                            System.out.println(s);  
+                        }
+                        break;
+                    case 3: 
+                        for(int i = 0; i < membros.get(ind).getContas().size(); i++)
+                        {
+                            aux = membros.get(ind).getContasHist().get(i);
+                            s = aux.toString();
+                            System.out.println(s);  
+                        }
+                        break;
+                    case 4:
+                            break;    
+                    default:
+                        System.out.println("Opção não existente!!");
+                        break;
+                }
+                System.out.println("Opção : ");
+                escolha = Ler.umInt();
+            }
+}
 }
