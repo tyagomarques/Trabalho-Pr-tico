@@ -85,9 +85,10 @@ public class TrabalhoPratico {
                     
                 case '2' : break;
                 
-                case '3' : break;
-                
-                case '4' :
+                case 'A' :
+                    if(a.getCategoria() == 1){
+                        a.menuAdmin();
+                    }
                                 
                                 // gravar no ficheiro//
                                 break;
