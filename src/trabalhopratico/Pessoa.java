@@ -14,9 +14,9 @@ public class Pessoa {
     private static int num = 0;
     private String nome;
     private String pass;
-    private ArrayList<Espaco> tasks;
-    private ArrayList<Contas> contasPagar;
-    private ArrayList<Contas> contasHist;
+    private ArrayList<Espaco> tasks = new ArrayList<Espaco>();
+    private ArrayList<Contas> contasPagar = new ArrayList<Contas>();
+    private ArrayList<Contas> contasHist = new ArrayList<Contas>();
     private String Nota;
     private int categoria; // 0 - Pessoa, 1 - Admin
     private int ntask; /*Quantas task faz?*/
@@ -59,13 +59,13 @@ public class Pessoa {
     
     public Pessoa(Pessoa pessoa)
     {
-        this.nome = pessoa.nome;
-        this.pass = pessoa.pass;
+        this.nome = pessoa.getNome();
+        this.pass = pessoa.getPass();
         setTasks(pessoa.getTasks());
-        setContas(pessoa.getContas());
-        setContas(pessoa.getContasHist());
+        setContas(pessoa.getContas());                    
+        setContasHist(pessoa.getContasHist());             
         Nota = pessoa.getNota();
-        categoria = pessoa.getCategoria();
+        categoria = pessoa.getCategoria();  
     }
     public static int getSucessos() {
         return sucessos;
@@ -131,6 +131,10 @@ public class Pessoa {
         return contasPagar;
     }
 
+    public void setContas(Contas contas) {
+       this.contasPagar.add(contas);
+    }
+
     public void setContas(ArrayList<Contas> contas) {
         ArrayList<Contas> nContas = new ArrayList<Contas>();
         
@@ -140,7 +144,8 @@ public class Pessoa {
         }
         this.contasPagar = nContas;
     }
-
+    
+    
     public ArrayList<Contas> getContasHist() {
         return contasHist;
     }
@@ -220,5 +225,11 @@ public class Pessoa {
     public void setNtask(int ntask) {
         this.ntask = ntask;
     }
+
+    public void setContasPagar(ArrayList<Contas> contasPagar) {
+        this.contasPagar = contasPagar;
+    }
+
+   
     
 }

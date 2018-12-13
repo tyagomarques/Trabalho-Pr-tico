@@ -21,7 +21,7 @@ public class TrabalhoPratico {
         
         
         ArrayList<Pessoa> membros = new ArrayList<Pessoa> ();
-        Pessoa a = new Pessoa("fabio","putas");
+        Admin a = new Admin("fabio","putas");
         a.setNota("HELLO MA DUDES");
         membros.add(a);
         String alma;
@@ -112,11 +112,11 @@ public class TrabalhoPratico {
                         menuGestaoPessoas(membros);
                         break;
                 case 2:
-                    //menuConta();
-                    break;
+                        menuConta(membros);
+                        break;
                         
                 case 4:
-                    break;     // Sair do menu
+                        break;     // Sair do menu
                 default:  
                     System.out.println("Opção não existente!!\n");
                     break;
@@ -170,5 +170,61 @@ public static void menuGestaoPessoas(ArrayList<Pessoa> membros)
     }
 
 
+public static void menuConta(ArrayList<Pessoa> membros){
+        int escolha3 = 0;
+        int n = 0;
+        double valor = 0;
+        double pagar = 0;
+        String s;
+        
+        System.out.println("1 - Adicionar Conta a Pagar;\n" + "2 - Remover Conta a Pagar;\n" +"3 - Consultar Contas.\n");
+        escolha3 = Ler.umInt();
+       
+        switch(escolha3){       // Sub-menu Contas
+            case 1: // Inserir conta        FALTA DIVIDIR PELAS PESSOAS
+                System.out.println("Valor da conta : ");
+                valor = Ler.umDouble();
+                System.out.println("Descrição da conta : ");
+                s = Ler.umaString();
+                Contas npr = new Contas(valor,s);
+                //membros.get(0).setContasAdmin(npr);    // Arraylist que armazena valor total de cada conta a pagar TRATAR DEPOIS, NAO TE ESQUECAS DIOGO
+                n = membros.size();  // tamanho array pessoas
+                pagar = valor/n; // Set valor para cada pessoa : valor/nºpessoas
+                // Adicionar valor individual que cada pessoa tem a pagar
+                Contas npr2 = new Contas(pagar,s);
+                // Assumir que Admin está no arrayList pessoa -> VERIFICAR  
+                for(int i = 0; i < n ; i++){
+                    membros.get(i).setContas(npr2);
+                }
+                break;
 
+            default:  
+                System.out.println("Opção não existente!!");
+                break;
+            }
+        
+    }
+    
+  /*  public void menuTarefas() { /*Por fazer
+            int escolha = 0;
+            System.out.println("1 – Trabalhadores;\n" + "2 – Locais de trabalho;\n" + "3 – Consultar todos os locais;\n" + "4 – Sair.\n");
+            escolha = Ler.umInt();
+            while (true) {       // Menu Inicial
+                switch (escolha) {
+                    case 1: menuTrabalhador();
+                        break;
+                    case 2: menuLocais();
+                        break;
+                    case 3: System.out.println(toStringEspaco()+"\n");
+                        break;
+                    case 4:
+                        return;     // Sair do menu
+                    default:
+                        System.out.println("Opção não existente!!");
+                        break;
+                }
+                System.out.println("Opção : ");
+                escolha = Ler.umInt();
+            } 
+    }*/
 }

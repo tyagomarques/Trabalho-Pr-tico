@@ -25,6 +25,12 @@ public class Admin extends Pessoa{
     public Admin(Pessoa pessoa){
         super(pessoa);  
     }
+
+    public Admin(String nome, String pass) {
+        super(nome, pass);
+    }
+    
+    
     
     public void insert(Pessoa a){
         pessoa.add(a);
@@ -38,6 +44,11 @@ public class Admin extends Pessoa{
         return null;
     }
 
+    public void setContasAdmin(Contas a)
+    {
+        this.contas.add(a);
+    }
+    
     public Espaco foundLocal(String nome){
         for(int i = 0; i<espacos.size();i++){
             if(espacos.get(i).getNome().equals(nome))
@@ -45,6 +56,24 @@ public class Admin extends Pessoa{
         }
         return null;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     public void menuGestaoPessoas()
     {
