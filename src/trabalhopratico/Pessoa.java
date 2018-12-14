@@ -168,6 +168,7 @@ public class Pessoa {
                 Contas cont2 = new Contas(hold,h);
                 contasHist.add(cont2);       // Passar conta a pagar para histórico de contas
                 contasPagar.remove(e);       // Remover do array contas a pagar
+                
             }
         }
     }
@@ -206,7 +207,7 @@ public class Pessoa {
     
     public String getNota()
     {
-        return (nome + "/n NOTA: /n" + Nota + "/n/n" );
+        return (nome + "\n NOTA: " + Nota + "\n\n" );
     }
     
     public int getCategoria()

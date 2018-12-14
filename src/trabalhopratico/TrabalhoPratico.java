@@ -60,7 +60,7 @@ public class TrabalhoPratico {
         
         
         
-        for (int i = 0; i < Pessoa.getNum(); i++)     // APRESENTA AS NOTAS DOS 
+        for (int i = 0; i < membros.size(); i++)     // APRESENTA AS NOTAS DOS 
         {                                               // RESIDENTES
             System.out.println(membros.get(i).getNota());
         }
@@ -180,7 +180,7 @@ public static void menuContaAdmin(ArrayList<Pessoa> membros){
         double pagar = 0;
         String s;
         
-        System.out.println("1 - Adicionar Conta a Pagar;\n" + "2 - Remover Conta a Pagar;\n" +"3 - Consultar Contas.\n");
+        System.out.println("1 - Adicionar Conta a Pagar;\n");
         escolha3 = Ler.umInt();
        
         switch(escolha3){       // Sub-menu Contas
@@ -189,7 +189,7 @@ public static void menuContaAdmin(ArrayList<Pessoa> membros){
                 valor = Ler.umDouble();
                 System.out.println("Descrição da conta : ");
                 s = Ler.umaString();
-                Contas npr = new Contas(valor,s);
+                //Contas npr = new Contas(valor,s);
                 //membros.get(0).setContasAdmin(npr);    // Arraylist que armazena valor total de cada conta a pagar TRATAR DEPOIS, NAO TE ESQUECAS DIOGO
                 n = membros.size();  // tamanho array pessoas
                 pagar = valor/n; // Set valor para cada pessoa : valor/nºpessoas
@@ -254,7 +254,7 @@ public static void menuContas (ArrayList<Pessoa> membros, int ind)
                         }
                         System.out.print("Conta a remover :");
                         remove = Ler.umInt();
-                        membros.get(ind).removerContasPagar(remove);
+                        membros.get(ind).removerContasPagar(remove,membros.get(ind).getContas(),membros.get(ind).getContasHist());
                         break;
                     case 2: 
                         for(int i = 0; i < membros.get(ind).getContas().size(); i++)
