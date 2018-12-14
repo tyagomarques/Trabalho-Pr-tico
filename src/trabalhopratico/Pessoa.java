@@ -219,6 +219,15 @@ public class Pessoa {
         this.contasPagar = contasPagar;
     }
 
+    public String toStringTarefas() {
+        String s="";
+        if(tasks.size() > 0) {
+            for (int i = 0; i < tasks.size(); i++) {
+                s = s + " " + tasks.get(i).getNome() + ";";
+            }
+        }
+        return s;
+    }
    
     
 }
