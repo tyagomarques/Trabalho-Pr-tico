@@ -134,10 +134,7 @@ public class TrabalhoPratico {
 
     }
 
-
-
-public static void menuGestaoPessoas(ArrayList<Pessoa> membros)
-    {
+public static void menuGestaoPessoas(ArrayList<Pessoa> membros){
         Pessoa novap;
         Pessoa test;
         String nome;
@@ -176,7 +173,6 @@ public static void menuGestaoPessoas(ArrayList<Pessoa> membros)
             }
         }while(opcao != 3);
     }
-
 
 public static void menuContaAdmin(ArrayList<Pessoa> membros){
         int escolha3 = 0;
@@ -238,9 +234,7 @@ public static void menuContaAdmin(ArrayList<Pessoa> membros){
             } 
     }
 
-
-public static void menuContas (ArrayList<Pessoa> membros, int ind)
-{
+public static void menuContas (ArrayList<Pessoa> membros, int ind){
     Contas aux;
     int remove;
     String s;
@@ -288,7 +282,6 @@ public static void menuContas (ArrayList<Pessoa> membros, int ind)
             }
 }
 
-
  public static void menuLocais(){
         int escolha = 0;
         String nome;
@@ -322,7 +315,6 @@ public static void menuContas (ArrayList<Pessoa> membros, int ind)
         }
     }
  
- 
  public static void menuTrabalhador(){
         int escolha = 0;
         String nome;
@@ -354,8 +346,7 @@ public static void menuContas (ArrayList<Pessoa> membros, int ind)
         }
     }
  
- public static void menuNotas(ArrayList<Pessoa> membros,int ind)
- {
+ public static void menuNotas(ArrayList<Pessoa> membros,int ind){
      int escolha = 0;
             System.out.println("1 – Ver Notas;\n" + "2 – Alterar Nota;\n" + "3 – Sair.\n");
             escolha = Ler.umInt();
@@ -381,4 +372,6 @@ public static void menuContas (ArrayList<Pessoa> membros, int ind)
                 escolha = Ler.umInt();
             } 
  }
+ 
+ 
 }
