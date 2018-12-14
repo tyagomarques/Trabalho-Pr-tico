@@ -7,6 +7,7 @@ package trabalhopratico;
 
 import java.util.ArrayList;
 import myinputs.Ler;
+import java.io.*;
 
 /**
  *
@@ -17,7 +18,7 @@ public class TrabalhoPratico {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         
         
         ArrayList<Pessoa> membros = new ArrayList<Pessoa> ();
@@ -92,6 +93,10 @@ public class TrabalhoPratico {
                     break;
                 
                 case 3 : break;
+                
+                case 4 : menuNotas(membros,ind);
+                    
+                    break;
                 
                 case 5 :
                                 
@@ -210,7 +215,7 @@ public static void menuContaAdmin(ArrayList<Pessoa> membros){
         
     }
     
-  /*  public void menuTarefas() { /*Por fazer
+  public void menuTarefas() {
             int escolha = 0;
             System.out.println("1 – Trabalhadores;\n" + "2 – Locais de trabalho;\n" + "3 – Consultar todos os locais;\n" + "4 – Sair.\n");
             escolha = Ler.umInt();
@@ -231,7 +236,7 @@ public static void menuContaAdmin(ArrayList<Pessoa> membros){
                 System.out.println("Opção : ");
                 escolha = Ler.umInt();
             } 
-    }*/
+    }
 
 
 public static void menuContas (ArrayList<Pessoa> membros, int ind)
@@ -282,4 +287,98 @@ public static void menuContas (ArrayList<Pessoa> membros, int ind)
                 escolha = Ler.umInt();
             }
 }
+
+
+ public static void menuLocais(){
+        int escolha = 0;
+        String nome;
+        System.out.println("1 – Adicionar;\n" + "2 – Remover;\n" + "3 – Consultar locais de trabalho;\n" + "4 - Alterar limpezas" + "5 - Sair.");
+        escolha = Ler.umInt();
+        while (true) {       // Menu Inicial
+            switch (escolha) {
+                case 1:
+                    System.out.println("Nome do local: ");
+                    nome=Ler.umaString();
+                    System.out.println(tasks.addTarefa(this.foundLocal(nome))+"\n");
+                    break;
+                case 2:
+                    System.out.println("Nome do local: ");
+                    nome=Ler.umaString();
+                    System.out.println(tasks.removeTarefa(tasks.foundLocal(nome).getNome())+"\n");
+                    break;
+                case 3:
+                    System.out.println(tasks.toStringEspaco()+"\n");
+                    break;
+                case 4: tasks.randomTarefas(); /*De forma WIP este comando serve para testar a minha bela função ^_^ by Tyago*/
+                        break;
+                case 5:
+                    return;     // Sai do menu
+                default:
+                    System.out.println("Opção não existente!!");
+                    break;
+            }
+            System.out.println("Opção : ");
+            escolha = Ler.umInt();
+        }
+    }
+ 
+ 
+ public static void menuTrabalhador(){
+        int escolha = 0;
+        String nome;
+        System.out.println("1 – Adicionar;\n" + "2 – Remover;\n" + "3 – Consultar Trabalhadores;\n" + "4 - Sair.");
+        escolha = Ler.umInt();
+        while (true) {       // Menu Inicial
+            switch (escolha) {
+                case 1:
+                    System.out.println("Nome da pessoa: ");
+                    nome=Ler.umaString();
+                    System.out.println(tasks.addPessoa(this.foundPessoa(nome))+"\n");
+                    break;
+                case 2:
+                    System.out.println("Nome da pessoa: ");
+                    nome=Ler.umaString();
+                    System.out.println(tasks.removePessoa(tasks.foundPessoa(nome).getNome())+"\n");
+                    break;
+                case 3:
+                    System.out.println(tasks.toStringPessoa()+"\n");
+                    break;
+                case 4:
+                    return;     // Sai do menu
+                default:
+                    System.out.println("Opção não existente!!");
+                    break;
+            }
+            System.out.println("Opção : ");
+            escolha = Ler.umInt();
+        }
+    }
+ 
+ public static void menuNotas(ArrayList<Pessoa> membros,int ind)
+ {
+     int escolha = 0;
+            System.out.println("1 – Ver Notas;\n" + "2 – Alterar Nota;\n" + "3 – Sair.\n");
+            escolha = Ler.umInt();
+            while (true) {       // Menu Inicial
+                switch (escolha) {
+                    case 1: 
+                        for (int i = 0; i < membros.size(); i++)     // APRESENTA AS NOTAS DOS 
+                        {                                               // RESIDENTES
+                            System.out.println(membros.get(i).getNota());
+                        }
+                        break;
+                    case 2:
+                        System.out.println("Nota nova:");
+                        membros.get(ind).setNota(Ler.umaString());
+                        break;
+                    case 3:
+                        return;     // Sair do menu
+                    default:
+                        System.out.println("Opção não existente!!");
+                        break;
+                }
+                System.out.println("Opção : ");
+                escolha = Ler.umInt();
+            } 
+ }
 }
