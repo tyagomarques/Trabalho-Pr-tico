@@ -160,17 +160,16 @@ public class Pessoa {
         this.contasHist = nContasHist;
     }
     
-    public void removerContasPagar(int valor){
-        for(Contas e : contasPagar) {
-            if (e.getID() == valor) {
-                double hold = e.getValor();  // Obter valor e descrição para criar nova conta
-                String h = e.getDescricao();
-                Contas cont2 = new Contas(hold,h);
-                contasHist.add(cont2);       // Passar conta a pagar para histórico de contas
-                contasPagar.remove(e);       // Remover do array contas a pagar
-                
+    public void removerContasPagar(int valor, ArrayList<Contas> contas, ArrayList<Contas> hist){
+        for(int i = 0; i <contas.size(); i++ ) 
+        {
+            if(contas.get(i).getID() == valor)
+            {
+                hist.add(contas.get(i));
+                contas.remove(i);
             }
         }
+        
     }
     
     public void consultas(){        // Consultar contas a pagar e histórico
