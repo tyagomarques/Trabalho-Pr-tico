@@ -76,7 +76,8 @@ public class TrabalhoPratico {
             System.out.println("2 - Contas");
             System.out.println("3 - Tarefas");
             System.out.println("4 - Notas");
-            System.out.println("5 - Sair");
+            System.out.println("5 - Mudar Utilizador");
+            System.out.println("6 - Sair");
             System.out.println("");
             System.out.print("ESCOLHA :");
             
@@ -99,13 +100,28 @@ public class TrabalhoPratico {
                     break;
                 
                 case 5 :
-                                
+                    
+                    do{                           // PROCURA A PESSOA NA LISTA E DEVOLVE O SEU
+                    System.out.print("Nome :");   // ID, REPETE-SE ENQUANTO O NOME NAO EXISTIR
+                    alma = Ler.umaString();                    // NA LISTA
+                    for(int i = 0; i < membros.size(); i++)
+                    {
+                        if(membros.get(i).getNome().equals(alma))
+                    {
+                        ind = i;
+                        break;
+                    }
+                    }
+                    }while(ind == -1);
+                    
+                    break;
+                case 6 :
                                 // gravar no ficheiro//
                                 break;
             }
             
         }
-        while(escolha != 5);   
+        while(escolha != 6);   
     }
 
     private static void MenuAdmin(ArrayList<Pessoa> membros) {
@@ -214,7 +230,7 @@ public static void menuContaAdmin(ArrayList<Pessoa> membros){
             }
         
     }
-    
+   /* 
   public void menuTarefas() {
             int escolha = 0;
             System.out.println("1 – Trabalhadores;\n" + "2 – Locais de trabalho;\n" + "3 – Consultar todos os locais;\n" + "4 – Sair.\n");
@@ -237,7 +253,7 @@ public static void menuContaAdmin(ArrayList<Pessoa> membros){
                 escolha = Ler.umInt();
             } 
     }
-
+*/
 
 public static void menuContas (ArrayList<Pessoa> membros, int ind)
 {
@@ -288,7 +304,7 @@ public static void menuContas (ArrayList<Pessoa> membros, int ind)
             }
 }
 
-
+/*
  public static void menuLocais(){
         int escolha = 0;
         String nome;
@@ -309,7 +325,7 @@ public static void menuContas (ArrayList<Pessoa> membros, int ind)
                 case 3:
                     System.out.println(tasks.toStringEspaco()+"\n");
                     break;
-                case 4: tasks.randomTarefas(); /*De forma WIP este comando serve para testar a minha bela função ^_^ by Tyago*/
+                case 4: tasks.randomTarefas(); /*De forma WIP este comando serve para testar a minha bela função ^_^ by Tyago
                         break;
                 case 5:
                     return;     // Sai do menu
@@ -353,7 +369,7 @@ public static void menuContas (ArrayList<Pessoa> membros, int ind)
             escolha = Ler.umInt();
         }
     }
- 
+ */
  public static void menuNotas(ArrayList<Pessoa> membros,int ind)
  {
      int escolha = 0;
